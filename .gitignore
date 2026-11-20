@@ -1,0 +1,59 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Python Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+*.py[cod]
+*$py.class
+__pycache__/
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+coverage/
+
+# Production Build outputs
+dist/
+dist-ssr/
+build/
+*.egg-info/
+
+# Environment and Secrets
+.env
+.env.*
+*.env
+backend/.env
+frontend/.env
+!.env.example
+!backend/.env.example
+!frontend/.env.example
+*.pem
+*.key
+*.db
+*.sqlite
+*.sqlite3
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Antigravity Brain / Temp
+scratch/

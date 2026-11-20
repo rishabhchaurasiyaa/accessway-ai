@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AccessWayCampusEdgesTemplate",
+  "description": "Canonical template for importing surveyed real-world campus edges into ACCESSWAY AI (Source of truth: ACCESSWAY_AI_M9_Project_Documentation.docx)",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "from_node_code",
+      "to_node_code",
+      "distance_m",
+      "estimated_seconds",
+      "path_type",
+      "stairs_count",
+      "operational_status",
+      "verification_status"
+    ],
+    "properties": {
+      "from_node_code": {
+        "type": "string",
+        "description": "Origin node code (e.g. NODE-BLDGA-FOYER)"
+      },
+      "to_node_code": {
+        "type": "string",
+        "description": "Destination node code (e.g. NODE-BLDGA-LIFT-G)"
+      },
+      "distance_m": {
+        "type": "number",
+        "exclusiveMinimum": 0,
+        "description": "Traversal distance in meters"
+      },
+      "estimated_seconds": {
+        "type": "integer",
+        "exclusiveMinimum": 0,
+        "description": "Estimated walking/rolling duration in seconds"
+      },
+      "path_type": {
+        "type": "string",
+        "enum": ["corridor", "walkway", "ramp", "lift", "stairs", "crossing", "other"]
+      },
+      "stairs_count": {
+        "type": "integer",
+        "minimum": 0,
+        "description": "Number of steps (0 for step-free paths; must be > 0 if path_type is 'stairs')"
+      },
+      "slope_percent": {
+        "type": "number",
+        "description": "Incline gradient percentage (e.g. 4.5% for gentle ramp, max 8.33% for ADA)"
+      },
+      "clear_width_cm": {
+        "type": "number",
+        "description": "Minimum corridor or door clear width in centimeters (min 90cm for standard wheelchairs)"
+      },
+      "wheelchair_accessible": {
+        "type": ["boolean", "null"],
+        "description": "Verified wheelchair accessibility. NULL indicates unverified and is NEVER included in step-free routes."
+      },
+      "tactile_guidance": {
+        "type": "boolean",
+        "description": "True if tactile ground paving or continuous handrail is present"
+      },
+      "verification_status": {
+        "type": "string",
+        "enum": ["verified", "unverified"],
+        "default": "unverified"
+      },
+      "operational_status": {
+        "type": "string",
+        "enum": ["available", "reported_unverified", "blocked", "unknown"],
+        "default": "available"
+      },
+      "landmark_instruction": {
+        "type": "string",
+        "description": "Spoken turn-by-turn instruction referencing physical cues"
+      }
+    }
+  }
+}

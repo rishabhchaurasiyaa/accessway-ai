@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AccessWayCampusNodesTemplate",
+  "description": "Canonical template for importing surveyed real-world campus nodes into ACCESSWAY AI (Source of truth: ACCESSWAY_AI_M9_Project_Documentation.docx)",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["node_code", "name", "node_type", "operational_status", "verification_status"],
+    "properties": {
+      "building_code": {
+        "type": "string",
+        "description": "Code of the building (e.g. BLDG-A, BLDG-B, BLDG-C) or null for outdoor nodes"
+      },
+      "node_code": {
+        "type": "string",
+        "description": "Unique identifier code (e.g. NODE-BLDGA-ENTRANCE-MAIN)"
+      },
+      "name": {
+        "type": "string",
+        "description": "Human-readable label for spoken navigation and screen readers"
+      },
+      "node_type": {
+        "type": "string",
+        "enum": ["entrance", "junction", "ramp", "lift", "landmark", "destination"]
+      },
+      "floor_label": {
+        "type": "string",
+        "description": "Descriptive floor identifier (e.g. 'Ground', 'Floor 1')"
+      },
+      "latitude": {
+        "type": "number",
+        "minimum": -90,
+        "maximum": 90,
+        "description": "WGS84 latitude coordinate"
+      },
+      "longitude": {
+        "type": "number",
+        "minimum": -180,
+        "maximum": 180,
+        "description": "WGS84 longitude coordinate"
+      },
+      "operational_status": {
+        "type": "string",
+        "enum": ["available", "reported_unverified", "blocked", "unknown"],
+        "default": "available"
+      },
+      "landmark_description": {
+        "type": "string",
+        "description": "Sensory guidance description for visually impaired navigation (acoustic, tactile, visual cues)"
+      },
+      "verification_status": {
+        "type": "string",
+        "enum": ["verified", "unverified"],
+        "default": "unverified"
+      },
+      "is_active": {
+        "type": "boolean",
+        "default": true
+      }
+    }
+  }
+}
